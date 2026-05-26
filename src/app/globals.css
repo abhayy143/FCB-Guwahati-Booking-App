@@ -2,26 +2,139 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 224 71% 4%;
+    --foreground: 210 40% 98%;
+    
+    --card: 224 71% 6%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 224 71% 4%;
+    --popover-foreground: 210 40% 98%;
+    
+    /* FC Barcelona Brand Colors */
+    --blau: 217 90% 50%;      /* Royal Blue */
+    --grana: 345 85% 40%;     /* Deep Burgundy/Garnet */
+    --gold: 45 93% 55%;       /* Barca Gold */
+    
+    --muted: 215 25% 27%;
+    --muted-foreground: 215 20% 65%;
+    
+    --accent: 217 90% 50%;
+    --accent-foreground: 210 40% 98%;
+    
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 217 90% 50%;
+    
+    --radius: 0.75rem;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 }
 
+/* Custom Utilities for Premium Look */
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .glass-panel {
+    background: rgba(10, 15, 30, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
   }
+  
+  .glass-card {
+    background: linear-gradient(135deg, rgba(20, 25, 45, 0.6) 0%, rgba(10, 12, 25, 0.8) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    border-color: rgba(253, 184, 19, 0.2);
+    box-shadow: 0 12px 40px 0 rgba(253, 184, 19, 0.05), 0 0 20px 0 rgba(0, 102, 178, 0.05);
+    transform: translateY(-2px);
+  }
+
+  .glass-input {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: white;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .glass-input:focus {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: hsl(var(--gold));
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(253, 184, 19, 0.2);
+  }
+
+  .text-glow-gold {
+    text-shadow: 0 0 8px rgba(253, 184, 19, 0.4);
+  }
+  
+  .text-glow-blau {
+    text-shadow: 0 0 8px rgba(0, 102, 178, 0.4);
+  }
+
+  .bg-blaugrana-gradient {
+    background: linear-gradient(135deg, hsl(217 90% 35%) 0%, hsl(345 85% 25%) 100%);
+  }
+
+  .bg-dark-gradient {
+    background: radial-gradient(circle at top, hsl(224 71% 8%) 0%, hsl(224 71% 3%) 100%);
+  }
+  
+  .border-glow-gold {
+    box-shadow: 0 0 15px rgba(253, 184, 19, 0.2);
+  }
+}
+
+/* Animations */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--gold) / 0.4);
 }

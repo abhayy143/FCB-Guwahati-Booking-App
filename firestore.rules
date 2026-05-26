@@ -1,0 +1,32 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper to check if request is from authenticated Admin
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email == 'admin@fcbguwahati.com';
+    }
+
+    match /events/{eventId} {
+      allow read: if true;
+      allow create, delete: if isAdmin();
+      allow update: if isAdmin() || (
+        request.auth != null && 
+        request.resource.data.title == resource.data.title &&
+        request.resource.data.price == resource.data.price &&
+        request.resource.data.venue == resource.data.venue &&
+        request.resource.data.date == resource.data.date
+      );
+    }
+
+    match /bookings/{bookingId} {
+      allow create: if request.auth != null;
+      allow get: if true;
+      allow list: if isAdmin() || (request.auth != null && resource.data.userId == request.auth.uid);
+      allow update, delete: if isAdmin();
+    }
+
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}

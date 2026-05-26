@@ -10,6 +10,9 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        gold: "hsl(var(--gold))",
+        blau: "hsl(var(--blau))",
+        grana: "hsl(var(--grana))",
       },
     },
   },
