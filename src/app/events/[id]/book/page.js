@@ -235,12 +235,16 @@ export default function BookEventPage() {
   const totalAmount = numberOfTickets * event.price;
   const upiId = process.env.NEXT_PUBLIC_UPI_ID || "fcbguwahati@upi";
   const upiName = process.env.NEXT_PUBLIC_UPI_NAME || "FCB Guwahati";
+  const isMerchant = process.env.NEXT_PUBLIC_UPI_MERCHANT === "true";
+  const staticQrUrl = process.env.NEXT_PUBLIC_UPI_QR_IMAGE || "";
   
-  // Format standard UPI URL schema: upi://pay?pa=upiid&pn=Name&am=Amount&cu=INR&tn=FCBGuwahatiBooking
-  const upiDeepLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(upiName)}&am=${totalAmount}&cu=INR&tn=${encodeURIComponent(`FCB Ghy: ${event.title.substring(0, 15)}`)}`;
+  // Format UPI URL schema: merchant vs personal P2P
+  const upiDeepLink = isMerchant 
+    ? `upi://pay?pa=${upiId}&pn=${encodeURIComponent(upiName)}&am=${totalAmount}&cu=INR&tn=${encodeURIComponent(`FCB Ghy: ${event.title.substring(0, 15)}`)}`
+    : `upi://pay?pa=${upiId}&pn=${encodeURIComponent(upiName)}&cu=INR`;
 
-  // Google Chart or free QR API for dynamic QR code rendering
-  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=0d1e3d&data=${encodeURIComponent(upiDeepLink)}`;
+  // Use static QR image if configured, otherwise fall back to generating a dynamic QR
+  const qrCodeUrl = staticQrUrl || `https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=0d1e3d&data=${encodeURIComponent(upiDeepLink)}`;
 
   return (
     <div className="w-full bg-dark-gradient min-h-screen py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
@@ -412,9 +416,16 @@ export default function BookEventPage() {
                 >
                   {/* Dynamic QR & instructions */}
                   <div className="flex flex-col items-center justify-center space-y-4 py-2 border-b border-white/5">
-                    <div className="text-center">
-                      <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Scan and pay exact amount</p>
-                      <div className="text-3xl font-black text-gold mt-1">₹{totalAmount}</div>
+                    <div className="text-center space-y-1">
+                      <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
+                        {isMerchant ? "Scan and pay exact amount" : "Scan QR & Enter Exact Amount"}
+                      </p>
+                      <div className="text-3xl font-black text-gold">₹{totalAmount}</div>
+                      {!isMerchant && (
+                        <p className="text-[10px] text-yellow-400 font-extrabold uppercase tracking-wide bg-yellow-500/10 px-3 py-1 rounded-full border border-yellow-500/20 max-w-[280px] mx-auto mt-1 animate-pulse">
+                          ⚠️ Enter ₹{totalAmount} manually in your UPI app
+                        </p>
+                      )}
                     </div>
 
                     {/* QR Code Container */}
