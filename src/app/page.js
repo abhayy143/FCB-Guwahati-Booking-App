@@ -85,7 +85,7 @@ export default function Home() {
             className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10"
           >
             <span className="w-2 h-2 rounded-full bg-yellow-500 animate-ping" />
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-300">Guwahati&apos;s Official Fan Club</span>
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-300">Guwahati&apos;s Fan Club</span>
           </motion.div>
 
           <motion.h1

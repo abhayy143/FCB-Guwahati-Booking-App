@@ -17,7 +17,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="text-muted-foreground text-sm max-w-sm">
-            Guwahati&apos;s official FC Barcelona fan community. Bringing culés together for epic screenings, competitive turf battles, and football talk.
+            Guwahati&apos;s FC Barcelona fan community. Bringing culés together for epic screenings, competitive turf battles, and football talk.
           </p>
           <div className="flex space-x-3 pt-2">
             <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 text-muted-foreground hover:text-gold hover:bg-white/10 transition-colors" title="Instagram">

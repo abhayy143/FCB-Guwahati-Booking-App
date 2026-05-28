@@ -68,7 +68,7 @@ export default function Navbar() {
                   FCB GUWAHATI
                 </span>
                 <span className="text-[10px] text-muted-foreground tracking-widest font-semibold uppercase leading-none mt-1">
-                  OFFICIAL FAN CLUB
+                  FAN CLUB
                 </span>
               </div>
             </Link>
@@ -83,11 +83,10 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-medium tracking-wide transition-all duration-300 ${
-                    active
+                  className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-medium tracking-wide transition-all duration-300 ${active
                       ? "bg-white/10 text-gold border border-gold/20 shadow-sm"
                       : "text-muted-foreground hover:bg-white/5 hover:text-white"
-                  }`}
+                    }`}
                 >
                   <Icon className={`w-4 h-4 ${active ? "text-gold" : "text-muted-foreground"}`} />
                   <span>{link.name}</span>
@@ -149,11 +148,10 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-xl text-base font-semibold transition-all duration-200 ${
-                    active
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-xl text-base font-semibold transition-all duration-200 ${active
                       ? "bg-white/10 text-gold border border-gold/20"
                       : "text-muted-foreground hover:bg-white/5 hover:text-white"
-                  }`}
+                    }`}
                 >
                   <Icon className="w-5 h-5" />
                   <span>{link.name}</span>
