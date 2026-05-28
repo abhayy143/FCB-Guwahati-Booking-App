@@ -73,7 +73,7 @@ export default function Home() {
 
   return (
     <div className="w-full bg-dark-gradient min-h-screen pb-16">
-      
+
       {/* 1. HERO SECTION */}
       <section className="relative overflow-hidden pt-20 pb-28 md:pt-28 md:pb-36 flex items-center justify-center border-b border-white/5">
         <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,rgba(0,102,178,0.15),transparent_50%)] animate-pulse-slow" />
@@ -87,7 +87,7 @@ export default function Home() {
             <span className="w-2 h-2 rounded-full bg-yellow-500 animate-ping" />
             <span className="text-xs font-bold uppercase tracking-wider text-slate-300">Guwahati&apos;s Official Fan Club</span>
           </motion.div>
-          
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -97,7 +97,7 @@ export default function Home() {
             Official <span className="bg-gradient-to-r from-blue-500 via-yellow-500 to-red-600 bg-clip-text text-transparent">FCB Guwahati</span> <br />
             Community Platform
           </motion.h1>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -106,7 +106,7 @@ export default function Home() {
           >
             Book screenings, join turf sessions, and experience football together.
           </motion.p>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -121,7 +121,7 @@ export default function Home() {
               <ArrowRight className="w-5 h-5" />
             </Link>
             <a
-              href="https://chat.whatsapp.com/mock-link"
+              href="https://chat.whatsapp.com/JDFcSdTcCKzLfQEgA5mdVd"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-bold rounded-xl border border-white/10 transition-all duration-300 flex items-center justify-center space-x-2 text-md"
@@ -177,7 +177,7 @@ export default function Home() {
                 View All Screenings <ChevronRight className="w-4 h-4 ml-1" />
               </Link>
             </div>
-            
+
             {screeningEvents.length === 0 ? (
               <div className="glass-card p-12 text-center rounded-2xl">
                 <p className="text-muted-foreground">No upcoming match screenings scheduled.</p>
@@ -206,7 +206,7 @@ export default function Home() {
                 View All Turf Matches <ChevronRight className="w-4 h-4 ml-1" />
               </Link>
             </div>
-            
+
             {turfEvents.length === 0 ? (
               <div className="glass-card p-12 text-center rounded-2xl">
                 <p className="text-muted-foreground">No turf matches planned for this week.</p>
@@ -235,7 +235,7 @@ export default function Home() {
             </p>
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://chat.whatsapp.com/mock-link"
+                href="https://chat.whatsapp.com/JDFcSdTcCKzLfQEgA5mdVd"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto px-8 py-4 bg-gold hover:bg-gold/90 text-black font-extrabold rounded-xl transition-all duration-300 shadow-lg border-glow-gold hover:scale-105"
@@ -258,7 +258,7 @@ export default function Home() {
 
 function EventCard({ event }) {
   const isSoldOut = event.remainingSeats <= 0;
-  
+
   return (
     <div className="glass-card overflow-hidden rounded-2xl flex flex-col md:flex-row group border border-white/5">
       {/* Banner */}
@@ -277,7 +277,7 @@ function EventCard({ event }) {
           </span>
         </div>
       </div>
-      
+
       {/* Detail */}
       <div className="p-6 flex flex-col justify-between flex-grow space-y-4">
         <div className="space-y-2">
@@ -305,14 +305,13 @@ function EventCard({ event }) {
             <div className="text-xs text-muted-foreground font-semibold uppercase tracking-wider">Pass Ticket</div>
             <div className="text-lg font-black text-white">₹{event.price}</div>
           </div>
-          
+
           <Link
             href={`/events/${event.id}`}
-            className={`px-5 py-2.5 rounded-xl text-sm font-extrabold transition-all duration-300 ${
-              isSoldOut 
-                ? "bg-slate-800 text-slate-500 cursor-not-allowed border border-white/5"
-                : "bg-gold text-black hover:bg-gold/90 hover:scale-105 border-glow-gold"
-            }`}
+            className={`px-5 py-2.5 rounded-xl text-sm font-extrabold transition-all duration-300 ${isSoldOut
+              ? "bg-slate-800 text-slate-500 cursor-not-allowed border border-white/5"
+              : "bg-gold text-black hover:bg-gold/90 hover:scale-105 border-glow-gold"
+              }`}
           >
             {isSoldOut ? "Sold Out" : "Book Pass"}
           </Link>
