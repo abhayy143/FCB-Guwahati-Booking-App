@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="w-full bg-slate-950 border-t border-white/5 py-12 px-6 sm:px-12 print:hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-        
+
         {/* Info Column */}
         <div className="md:col-span-2 space-y-4">
           <div className="flex items-center space-x-2">
@@ -43,7 +43,7 @@ export default function Footer() {
               <Link href="/admin" className="hover:text-gold transition-colors">Admin Area</Link>
             </li>
             <li>
-              <a href="https://chat.whatsapp.com/mock-link" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1 hover:text-gold transition-colors">
+              <a href="https://chat.whatsapp.com/JDFcSdTcCKzLfQEgA5mdVd" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1 hover:text-gold transition-colors">
                 <span>WhatsApp Group</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
